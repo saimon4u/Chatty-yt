@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: 535002880243.dkr.ecr.ap-south-1.amazonaws.com/chatty-backend:latest
+        ports:
+        - containerPort: 5001
+        env:
+          - name: MONGODB_URI
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: MONGODB_URI
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: PORT
+          - name: JWT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: JWT_SECRET
+          - name: CLOUDINARY_CLOUD_NAME
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: CLOUDINARY_CLOUD_NAME
+          - name: CLOUDINARY_API_KEY  
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: CLOUDINARY_API_KEY
+          - name: CLOUDINARY_API_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: CLOUDINARY_API_SECRET          
+          - name: NODE_ENV
+            valueFrom:
+              secretKeyRef:
+                name: backend-sec
+                key: NODE_ENV

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-sec
+type: Opaque
+data:
+  MONGODB_URI: bW9uZ29kYjovL21vbmdvZGItc3ZjOjI3MDE3L2NoYXR0eWRiP2RpcmVjdENvbm5lY3Rpb249dHJ1ZQo=
+  PORT: NTAwMQo=
+  JWT_SECRET: bW9uZ29kYjovL21vbmdvZGItc3ZjOjI3MDE3L2NoYXR0eWRiP2RpcmVjdENvbm5lY3Rpb249dHJ1ZQo=
+  CLOUDINARY_CLOUD_NAME: ImRkcnJtaWlneSI=
+  CLOUDINARY_API_KEY: Ijk2NTg3ODk0Nzg1NTc1NSI=
+  CLOUDINARY_API_SECRET: Ilc1Qm4xUUVYczFoVmlXaElmLUNDaFhxMkU5USI=
+  NODE_ENV: ImRldmVsb3BtZW50Ig==
