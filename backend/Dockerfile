@@ -14,8 +14,6 @@ WORKDIR /app
 
 COPY --from=builder /app .
 
-COPY .env .env
-
 EXPOSE 5001
 
 CMD ["npm", "run", "start"]
